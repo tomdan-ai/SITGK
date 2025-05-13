@@ -6,20 +6,38 @@ import logoImage from '/logo.png';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
+    // Check if we're on the home page
+    const checkPage = () => {
+      setIsHomePage(window.location.pathname === '/');
+    };
+
+    checkPage();
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('popstate', checkPage);
+    window.addEventListener('navchange', checkPage);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('popstate', checkPage);
+      window.removeEventListener('navchange', checkPage);
+    };
   }, []);
+
+  // Use transparent bg only on home page when not scrolled
+  // Use navy bg when scrolled or on other pages
+  const shouldBeTransparent = isHomePage && !isScrolled;
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-navy shadow-md py-2' : 'bg-transparent py-4'
+        shouldBeTransparent ? 'bg-transparent py-4' : 'bg-navy shadow-md py-2'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">

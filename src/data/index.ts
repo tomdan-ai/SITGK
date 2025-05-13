@@ -1,7 +1,7 @@
 import { NavItem, Project, Testimonial, TeamMember, Event, DonationOption } from '../types';
-import project1 from '../../public/pr1.png'
-import project2 from '../../public/pr2.png'
-import project3 from '../../public/pr3.png'
+import project1 from '/pr1.png'
+import project2 from '/pr2.png'
+import project3 from '/pr3.png'
 
 export const navItems: NavItem[] = [
   { label: 'Home', href: '/' },

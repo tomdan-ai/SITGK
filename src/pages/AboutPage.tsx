@@ -8,8 +8,12 @@ import { Mail } from 'lucide-react';
 import director from '../../public/director.jpg'
 
 const AboutPage: React.FC = () => {
-  // Find Michael Carter in the team members array
-  const programDirector = teamMembers.find(member => member.name === 'Michael Carter');
+  // Create a founder object instead of looking for Michael Carter
+  const founder = {
+    name: 'Vera Addo',
+    role: 'Founder',
+    bio: 'Coordinating our community initiatives and ensuring effective implementation of our projects.',
+  };
 
   // Animation variants
   const fadeIn = {
@@ -71,7 +75,7 @@ const AboutPage: React.FC = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="https://images.pexels.com/photos/6647037/pexels-photo-6647037.jpeg" 
+                src="./mission.png" 
                 alt="SITGK International volunteers in action" 
                 className="w-full h-full object-cover"
               />
@@ -96,7 +100,7 @@ const AboutPage: React.FC = () => {
                 Stand In The Gap Kindred International began when a group of friends noticed growing needs in their community and decided to take action. What started as small, local volunteer efforts quickly grew into an international movement as more people joined the cause.
               </p>
               <p className="text-gray-600">
-                Our founder, Sarah Johnson, had spent years working in social services and saw firsthand how small, targeted interventions could make a significant difference in people's lives. With this knowledge, she gathered a dedicated team to create an organization focused on effective, compassionate community support across borders.
+                Our founder, Vera Addo, had spent years working in social services and saw firsthand how small, targeted interventions could make a significant difference in people's lives. With this knowledge, she gathered a dedicated team to create an organization focused on effective, compassionate community support across borders.
               </p>
             </div>
             
@@ -120,7 +124,7 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Our Team - Now featuring only Michael Carter */}
+      {/* Our Team section - now featuring Vera Addo */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
@@ -131,55 +135,53 @@ const AboutPage: React.FC = () => {
           >
             <motion.div variants={fadeIn}>
               <SectionHeading 
-                title="Meet Our Program Director" 
+                title="Meet Our Founder" 
                 subtitle="The dedicated individual who leads our organization and drives our mission forward."
                 centered
               />
             </motion.div>
             
-            {programDirector && (
-              <motion.div 
-                className="max-w-md mx-auto"
-                variants={fadeIn}
-                whileHover={{ 
-                  y: -5,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <Card>
-                  <motion.div 
-                    className="h-64 overflow-hidden"
+            <motion.div 
+              className="max-w-md mx-auto"
+              variants={fadeIn}
+              whileHover={{ 
+                y: -5,
+                transition: { duration: 0.3 }
+              }}
+            >
+              <Card>
+                <motion.div 
+                  className="h-64 overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <img 
+                    src={director} 
+                    alt={founder.name} 
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+                <motion.div 
+                  className="p-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                >
+                  <h3 className="text-xl font-bold text-navy mb-1">{founder.name}</h3>
+                  <p className="text-orange font-medium mb-4">{founder.role}</p>
+                  <p className="text-gray-600 mb-4">{founder.bio}</p>
+                  <motion.a 
+                    href={`mailto:${founder.name.toLowerCase().replace(' ', '.')}@sitgk.org`} 
+                    className="inline-flex items-center text-navy hover:text-orange transition-colors"
                     whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.5 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <img 
-                      src={director} 
-                      alt={programDirector.name} 
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                  <motion.div 
-                    className="p-6"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                  >
-                    <h3 className="text-xl font-bold text-navy mb-1">{programDirector.name}</h3>
-                    <p className="text-orange font-medium mb-4">{programDirector.role}</p>
-                    <p className="text-gray-600 mb-4">{programDirector.bio}</p>
-                    <motion.a 
-                      href={`mailto:${programDirector.name.toLowerCase().replace(' ', '.')}@sitgk.org`} 
-                      className="inline-flex items-center text-navy hover:text-orange transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Mail className="w-4 h-4 mr-2" />
-                      Contact
-                    </motion.a>
-                  </motion.div>
-                </Card>
-              </motion.div>
-            )}
+                    <Mail className="w-4 h-4 mr-2" />
+                    Contact
+                  </motion.a>
+                </motion.div>
+              </Card>
+            </motion.div>
           </motion.div>
         </div>
       </section>

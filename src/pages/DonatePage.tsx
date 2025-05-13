@@ -49,7 +49,7 @@ const DonatePage: React.FC = () => {
               </div>
               <div className="flex items-center space-x-4 bg-gray-50 p-4 rounded-lg">
                 <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/MTN_Mobile_Money_logo.svg/320px-MTN_Mobile_Money_logo.svg.png" 
+                  src="/mtn.png" 
                   alt="MTN Mobile Money" 
                   className="w-16 h-16 object-contain"
                 />

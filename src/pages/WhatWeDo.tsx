@@ -68,7 +68,7 @@ const WhatWeDo: React.FC = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg"
+                src="/approch.png"
                 alt="Community outreach" 
                 className="w-full h-full object-cover"
               />
